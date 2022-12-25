@@ -18,7 +18,8 @@ const userSchema=new mongoose.Schema(
 const User = new mongoose.model("User",userSchema);
 const port= process.env.PORT || 5000
 //ROUTES
-app.post("/login",(req,res)=>{
+app.get("/login",(req,res)=>{
+    res.send("LOGIN");
     const {email, password} = req.body;
     User.findOne({email:email},(err,user)=>{
         if(user)
@@ -32,7 +33,8 @@ app.post("/login",(req,res)=>{
         res.send({message:"User not registered"})
     })
 })
-app.post("/register",(req,res)=>{
+app.get("/register",(req,res)=>{
+    res.send("REGISTER");
     const {name, email, password} = req.body;
     User.findOne({email:email},(err,user)=>{
         if(user)
